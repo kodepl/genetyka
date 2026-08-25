@@ -1,0 +1,77 @@
+---
+import site from "../site.config";
+import { rubricSlug } from "../site.config";
+const { title, description = site.tagline, image = site.heroImage } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+---
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <script is:inline>if(location.hostname.indexOf("www.")!==0){location.replace(location.href.replace("://","://www."));}</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · {site.name}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={`${title} · ${site.name}`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:locale" content="pl_PL" />
+    <meta name="robots" content="index,follow" />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+    <style is:global>
+      body { font-family: "DM Sans", system-ui, sans-serif; }
+      .font-serif { font-family: "Cormorant Garamond", Georgia, serif; }
+    </style>
+  </head>
+  <body class="bg-genome-50 text-genome-950">
+    <header class="border-b border-genome-800/20 bg-genome-950 text-genome-50">
+      <div class="mx-auto flex max-w-6xl flex-wrap items-end justify-between gap-4 px-5 py-6">
+        <div>
+          <a href="/" class="font-serif text-3xl font-semibold tracking-tight text-genome-100">{site.name}</a>
+          <p class="mt-1 max-w-md text-sm text-genome-100/70">{site.tagline}</p>
+        </div>
+        <nav class="flex flex-wrap gap-5 text-sm font-medium text-genome-100/85">
+          <a href="/" class="hover:text-white">Start</a>
+          <a href="/blog/" class="hover:text-white">Artykuły</a>
+          <a href="/dzialy/" class="hover:text-white">Działy</a>
+          <a href="/o-nas/" class="hover:text-white">O nas</a>
+          <a href="/kontakt/" class="hover:text-white">Kontakt</a>
+        </nav>
+      </div>
+    </header>
+    <slot />
+    <footer class="mt-16 border-t border-genome-800/15 bg-genome-950 text-genome-100/75">
+      <div class="mx-auto grid max-w-6xl gap-10 px-5 py-12 text-sm md:grid-cols-3">
+        <div>
+          <p class="font-serif text-lg font-semibold text-genome-50">{site.name}</p>
+          <p class="mt-2">{site.tagline}</p>
+          <p class="mt-3">{site.address}</p>
+          <p class="mt-2"><a class="hover:text-white" href={`mailto:${site.email}`}>{site.email}</a></p>
+        </div>
+        <div>
+          <p class="font-semibold text-genome-50">Działy</p>
+          <ul class="mt-3 space-y-2">
+            {site.rubrics.map((r) => (
+              <li><a class="hover:text-white" href={`/dzialy/${rubricSlug(r.name)}/`}>{r.name}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-genome-50">Informacja</p>
+          <p class="mt-3 leading-relaxed">Materiały mają charakter edukacyjny. Nie zastępują konsultacji genetycznej ani porady lekarskiej.</p>
+          <p class="mt-4 text-xs">
+            <a class="hover:text-white" href="/polityka-prywatnosci/">Polityka prywatności</a>
+            ·
+            <a class="hover:text-white" href="/regulamin/">Regulamin</a>
+          </p>
+          <p class="mt-3 text-xs">© {new Date().getFullYear()} {site.name}, {site.city}</p>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"PLACEHOLDER_ANALYTICS"}'></script>
+  </body>
+</html>

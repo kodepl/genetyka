@@ -1,0 +1,68 @@
+---
+import Genome from "../../layouts/Genome.astro";
+import site, { coverFor } from "../../site.config";
+import { getCollection } from "astro:content";
+import GithubSlugger from "github-slugger";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await post.render();
+const slugger = new GithubSlugger();
+const headings = (post.body.match(/^##\s+(.+)$/gm) || []).map((line) => {
+  const text = line.replace(/^##\s+/, "");
+  return { text, id: slugger.slug(text) };
+});
+const minutes = Math.max(1, Math.round(post.body.split(/\s+/).filter(Boolean).length / 200));
+const author = post.data.author ?? site.author;
+const bio = post.data.authorBio ?? site.authorBio;
+const cover = coverFor(post.data.category, post.data.image);
+const related = (await getCollection("blog"))
+  .filter((p) => p.slug !== post.slug && p.data.category === post.data.category)
+  .slice(0, 3);
+---
+<Genome title={post.data.title} description={post.data.description} image={cover}>
+  <article class="mx-auto max-w-3xl px-5 py-10">
+    <p class="text-xs font-semibold uppercase tracking-widest text-genome-700">{post.data.category}</p>
+    <h1 class="mt-2 font-serif text-4xl font-semibold leading-tight text-genome-950">{post.data.title}</h1>
+    <p class="mt-3 text-sm text-genome-800/65">
+      {post.data.pubDate.toLocaleDateString("pl-PL", { day: "numeric", month: "long", year: "numeric" })}
+      · {minutes} min · {author}
+    </p>
+    <img src={cover} alt="" class="mt-8 h-64 w-full rounded-sm object-cover shadow-sm" />
+    {headings.length > 0 && (
+      <nav class="mt-8 rounded-sm border border-genome-800/10 bg-white p-5 text-sm shadow-sm">
+        <p class="font-semibold text-genome-900">Spis treści</p>
+        <ol class="mt-3 list-decimal space-y-1 pl-5 text-genome-800">
+          {headings.map((h) => (
+            <li><a class="hover:text-genome-600" href={`#${h.id}`}>{h.text}</a></li>
+          ))}
+        </ol>
+      </nav>
+    )}
+    <div class="prose prose-lg prose-emerald mt-10 max-w-none prose-headings:font-serif prose-headings:text-genome-950">
+      <Content />
+    </div>
+    <section class="mt-14 border-t border-genome-800/15 pt-8">
+      <div class="flex gap-4">
+        <img src={site.authorAvatar} alt={author} class="h-16 w-16 rounded-full object-cover ring-2 ring-genome-700/15" />
+        <div>
+          <p class="font-semibold text-genome-950">{author}</p>
+          <p class="mt-1 text-sm leading-relaxed text-genome-800/75">{bio}</p>
+        </div>
+      </div>
+    </section>
+    {related.length > 0 && (
+      <section class="mt-10">
+        <h2 class="font-serif text-xl font-semibold text-genome-900">Więcej z działu {post.data.category}</h2>
+        <ul class="mt-4 space-y-2">
+          {related.map((item) => (
+            <li><a class="text-genome-800 hover:text-genome-600" href={`/blog/${item.slug}/`}>{item.data.title}</a></li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </article>
+</Genome>

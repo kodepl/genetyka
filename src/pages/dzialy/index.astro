@@ -1,0 +1,31 @@
+---
+import Genome from "../../layouts/Genome.astro";
+import { getCollection } from "astro:content";
+import site, { coverFor, rubricSlug } from "../../site.config";
+const posts = await getCollection("blog");
+const cats = [...new Set(posts.map((p) => p.data.category).filter(Boolean))] as string[];
+const displayCats = cats.length > 0 ? cats : site.rubrics.map((r) => r.name);
+---
+<Genome title="Działy" description="Genetyka medyczna, DNA, badania prenatalne i onkogenetyka.">
+  <section class="mx-auto max-w-5xl px-5 py-10">
+    <h1 class="font-serif text-4xl font-semibold text-genome-950">Działy</h1>
+    <p class="mt-2 max-w-2xl text-genome-800/75">Tematy uporządkowane tak, jak pytają nas czytelnicy w gabinecie genetycznym.</p>
+    <div class="mt-10 grid gap-5 md:grid-cols-2">
+      {displayCats.map((cat) => {
+        const sample = posts.find((p) => p.data.category === cat);
+        const count = posts.filter((p) => p.data.category === cat).length;
+        const rubric = site.rubrics.find((r) => r.name === cat);
+        return (
+          <a href={`/dzialy/${rubricSlug(cat)}/`} class="group overflow-hidden rounded-sm border border-genome-800/10 bg-white shadow-sm hover:shadow-md">
+            <img src={coverFor(cat, sample?.data.image)} alt="" class="h-40 w-full object-cover transition group-hover:opacity-95" />
+            <div class="p-5">
+              <h2 class="font-serif text-2xl font-semibold text-genome-950 group-hover:text-genome-700">{cat}</h2>
+              <p class="mt-2 text-sm text-genome-800/70">{rubric?.blurb}</p>
+              <p class="mt-3 text-xs font-medium uppercase tracking-wide text-genome-700">{count} artykułów</p>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+</Genome>

@@ -54,6 +54,6 @@ Wbrew pozorom, epigenetyka pokazuje, że geny nie są jedynym czynnikiem determi
 
 Badania nad epigenetyką są wciąż na etapie rozwoju. **Zrozumienie, jak mechanizmy epigenetyczne wpływają na nasze zdrowie i choroby, może otworzyć nowe możliwości w terapii genowej.** W ciągu najbliższych lat możemy spodziewać się dalszego rozwoju metod modyfikacji epigenetycznych, które mogą być stosowane w medycynie precyzyjnej.
 
-Podsumowując, epigenetyka to fascynująca dziedzina, która zmienia nasze spojrzenie na genetykę i zdrowie. Zrozumienie, jak geny mogą być regulowane bez zmian w sekwencji DNA, otwiera nowe drogi w diagnostyce i terapii wielu schorzeń. W praktyce, wiedza ta staje się coraz bardziej istotna w kontekście personalizacji leczenia oraz prewencji chorób. 
+Epigenetyka to fascynująca dziedzina, która zmienia nasze spojrzenie na genetykę i zdrowie. Zrozumienie, jak geny mogą być regulowane bez zmian w sekwencji DNA, otwiera nowe drogi w diagnostyce i terapii wielu schorzeń. W praktyce, wiedza ta staje się coraz bardziej istotna w kontekście personalizacji leczenia oraz prewencji chorób. 
 
 Więcej informacji na temat epigenetyki można znaleźć w artykule: [Źródło](https://pl.wikipedia.org/wiki/Epigenetyka).

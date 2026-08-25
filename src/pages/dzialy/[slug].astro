@@ -1,0 +1,41 @@
+---
+import Genome from "../../layouts/Genome.astro";
+import { getCollection } from "astro:content";
+import site, { coverFor, rubricSlug } from "../../site.config";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  const cats = [...new Set(posts.map((p) => p.data.category).filter(Boolean))] as string[];
+  const fromConfig = site.rubrics.map((r) => r.name);
+  const all = [...new Set([...cats, ...fromConfig])];
+  return all.map((name) => ({
+    params: { slug: rubricSlug(name) },
+    props: { name, posts: posts.filter((p) => p.data.category === name) },
+  }));
+}
+const { name, posts } = Astro.props;
+const sorted = [...posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const rubric = site.rubrics.find((r) => r.name === name);
+---
+<Genome title={name} description={rubric?.blurb || `Artykuły z działu ${name}.`} image={coverFor(name)}>
+  <section class="mx-auto max-w-4xl px-5 py-10">
+    <p class="text-xs font-semibold uppercase tracking-widest text-genome-700"><a href="/dzialy/">Działy</a> / {name}</p>
+    <h1 class="mt-2 font-serif text-4xl font-semibold text-genome-950">{name}</h1>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-genome-800/80">{rubric?.blurb}</p>
+    {sorted.length > 0 ? (
+      <div class="mt-10 space-y-4">
+        {sorted.map((post) => (
+          <a href={`/blog/${post.slug}/`} class="flex gap-4 overflow-hidden rounded-sm border border-genome-800/10 bg-white shadow-sm hover:shadow-md">
+            <img src={coverFor(post.data.category, post.data.image)} alt="" class="h-28 w-40 shrink-0 object-cover" />
+            <div class="py-4 pr-4">
+              <h2 class="font-serif text-xl font-semibold text-genome-950">{post.data.title}</h2>
+              <p class="mt-1 line-clamp-2 text-sm text-genome-800/70">{post.data.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="mt-10 text-genome-800/70">Wkrótce pojawią się tu artykuły z tego działu.</p>
+    )}
+  </section>
+</Genome>

@@ -25,7 +25,7 @@ CYP2D6 ma wiele wariantów, co prowadzi do różnic w jego aktywności u różny
 
 Kodeina jest prolekiem, co oznacza, że musi być przekształcona w organizmie do morfiny, aby działała przeciwbólowo. Szybcy metabolizatorzy przetwarzają kodeinę w morfinę w sposób efektywny, co skutkuje silnym działaniem przeciwbólowym. Natomiast wolni metabolizatorzy, tacy jak wspomniana pacjentka, mogą nie odczuwać ulgi, ponieważ ich organizm przekształca lek w minimalnym stopniu.
 
-Warto zauważyć, że nadmierne przetwarzanie kodeiny przez szybkie metabolizatory może prowadzić do ryzyka przedawkowania. Dlatego tak ważne jest, aby lekarze brali pod uwagę indywidualne różnice w metabolizmie leków.
+Nadmierne przetwarzanie kodeiny przez szybkie metabolizatory może prowadzić do ryzyka przedawkowania. Dlatego tak ważne jest, aby lekarze brali pod uwagę indywidualne różnice w metabolizmie leków.
 
 ### Przykłady kliniczne
 

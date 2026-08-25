@@ -1,0 +1,27 @@
+---
+import Genome from "../layouts/Genome.astro";
+import site from "../site.config";
+---
+<Genome title="O nas" description={`Kim jest redakcja ${site.name} — genetyka medyczna po polsku.`} image={site.aboutImage}>
+  <main class="mx-auto max-w-3xl px-5 py-10">
+    <img src={site.aboutImage} alt="Laboratorium genetyczne" class="h-64 w-full rounded-sm object-cover shadow-sm" />
+    <h1 class="mt-10 font-serif text-4xl font-semibold text-genome-950">O nas</h1>
+    <p class="mt-6 text-lg leading-relaxed text-genome-900/90">
+      {site.name} to portal dla osób, które dostały wynik badania genetycznego i nie wiedzą, od którego akapitu zacząć. Piszemy o DNA, dziedziczeniu i genetyce medycznej — z perspektywy gabinetu, nie slajdów z konferencji.
+    </p>
+    <p class="mt-4 leading-relaxed text-genome-800/80">
+      Redakcja mieści się przy {site.address}. Nie sprzedajemy testów DNA ani nie pośredniczymy w badaniach. Naszym celem jest tłumaczenie: co wynik oznacza, kiedy warto powtórzyć analizę, a kiedy spokojnie wrócić do lekarza prowadzącego z konkretnymi pytaniami.
+    </p>
+    <p class="mt-4 leading-relaxed text-genome-800/80">
+      Teksty powstają we współpracy z genetykami klinicznymi i lekarzami. Unikamy sensacji — wolimy podać liczbę ryzyka niż obiecać „odkrycie, które zmieni wszystko”.
+    </p>
+    <div class="mt-12 flex gap-5 border-t border-genome-800/15 pt-8">
+      <img src={site.authorAvatar} alt={site.author} class="h-20 w-20 rounded-full object-cover ring-2 ring-genome-700/20" />
+      <div>
+        <p class="font-serif text-xl font-semibold text-genome-950">{site.author}</p>
+        <p class="mt-1 text-sm font-medium text-genome-700">{site.authorRole}</p>
+        <p class="mt-3 text-sm leading-relaxed text-genome-800/75">{site.authorBio}</p>
+      </div>
+    </div>
+  </main>
+</Genome>

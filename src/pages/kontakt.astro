@@ -1,0 +1,20 @@
+---
+import Genome from "../layouts/Genome.astro";
+import site from "../site.config";
+---
+<Genome title="Kontakt" description={`Kontakt z redakcją ${site.name}.`}>
+  <section class="mx-auto max-w-xl px-5 py-10">
+    <h1 class="font-serif text-4xl font-semibold text-genome-950">Kontakt</h1>
+    <p class="mt-4 text-genome-800/80">Redakcja {site.name}</p>
+    <p class="mt-2">{site.address}</p>
+    <p class="mt-2"><a class="font-medium text-genome-700 underline decoration-genome-600/30 hover:text-genome-600" href={`mailto:${site.email}`}>{site.email}</a></p>
+    <p class="mt-6 text-sm leading-relaxed text-genome-800/70">
+      Odpowiadamy na pytania redakcyjne i propozycje tematów. Nie udzielamy porad medycznych przez e-mail — w takich sprawach prosimy o kontakt z lekarzem lub poradnią genetyczną.
+    </p>
+    <form class="mt-8 space-y-4" action={"mailto:" + site.email} method="get" enctype="text/plain">
+      <input name="subject" required placeholder="Temat wiadomości" class="w-full rounded-sm border border-genome-800/20 bg-white px-4 py-3 text-sm shadow-sm focus:border-genome-600 focus:outline-none" />
+      <textarea name="body" required rows="6" placeholder="Treść wiadomości" class="w-full rounded-sm border border-genome-800/20 bg-white px-4 py-3 text-sm shadow-sm focus:border-genome-600 focus:outline-none"></textarea>
+      <button class="rounded-sm bg-genome-800 px-5 py-3 text-sm font-medium text-white hover:bg-genome-700">Wyślij wiadomość</button>
+    </form>
+  </section>
+</Genome>

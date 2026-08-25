@@ -11,7 +11,7 @@ readingTime: "6 min"
 
 ## Wprowadzenie do problematyki
 
-Rak jajnika to jeden z najgroźniejszych nowotworów u kobiet. Szacuje się, że w Polsce co roku diagnozuje się około 3 000 nowych przypadków. Zdecydowana większość kobiet z rakiem jajnika jest diagnozowana w późnym stadium, co powoduje, że pięcioletnie przeżycie nie przekracza 30%. Zmutowane geny BRCA1 i BRCA2 znacząco wpływają na ryzyko wystąpienia tego nowotworu.
+Rak jajnika to jeden z najgroźniejszych nowotworów u kobiet — szczegóły epidemiologiczne opisuje m.in. [Źródło](https://pl.wikipedia.org/wiki/Rak_jajnika). Szacuje się, że w Polsce co roku diagnozuje się około 3 000 nowych przypadków. Zdecydowana większość kobiet z rakiem jajnika jest diagnozowana w późnym stadium, co powoduje, że pięcioletnie przeżycie nie przekracza 30%. Zmutowane geny BRCA1 i BRCA2 znacząco wpływają na ryzyko wystąpienia tego nowotworu.
 
 ## Mutacje BRCA — liczby ryzyka
 

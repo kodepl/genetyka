@@ -1,0 +1,20 @@
+---
+import Genome from "../../layouts/Genome.astro";
+import { getCollection } from "astro:content";
+const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<Genome title="Artykuły" description="Archiwum artykułów o genetyce medycznej, DNA i badaniach prenatalnych.">
+  <main class="mx-auto max-w-3xl px-5 py-10">
+    <h1 class="font-serif text-4xl font-semibold text-genome-950">Artykuły</h1>
+    <p class="mt-2 text-genome-800/75">Wszystkie teksty redakcji Genetyka.</p>
+    <ul class="mt-10 space-y-6">
+      {posts.map((post) => (
+        <li class="border-b border-genome-800/10 pb-6">
+          <p class="text-xs font-semibold uppercase tracking-widest text-genome-700">{post.data.category}</p>
+          <a href={`/blog/${post.slug}/`} class="mt-1 block font-serif text-2xl font-semibold hover:text-genome-700">{post.data.title}</a>
+          <p class="mt-2 text-sm text-genome-800/70">{post.data.description}</p>
+        </li>
+      ))}
+    </ul>
+  </main>
+</Genome>

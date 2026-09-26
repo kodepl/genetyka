@@ -1,5 +1,4 @@
 ---
-import EmailLink from "../components/EmailLink.astro";
 import Genome from "../layouts/Genome.astro";
 import site from "../site.config";
 ---
@@ -8,7 +7,21 @@ import site from "../site.config";
     <h1 class="font-serif text-4xl font-semibold text-genome-950">Kontakt</h1>
     <p class="mt-4 text-genome-800/80">Redakcja {site.name}</p>
     <p class="mt-2">{site.address}</p>
-    <p class="mt-2"><EmailLink /></p>
+    <p class="mt-2"><b id="qohhu" style="font-weight:inherit;cursor:pointer">Korespondencja</b>
+<script is:inline>
+document.getElementById("qohhu").addEventListener("click", function () {
+  var even = 40;
+  var odd = 41;
+  var a = [64,91,90,16,79,73,68,75,69];
+  var b = [72,76,17,105,68,64,7,70];
+  var s = "";
+  for (var i = 0; i < 17; i++) {
+    var code = i % 2 === 0 ? a[i / 2] : b[(i - 1) / 2];
+    s += String.fromCharCode(code ^ (i % 2 === 0 ? even : odd));
+  }
+  this.textContent = s;
+});
+</script></p>
     <p class="mt-6 text-sm leading-relaxed text-genome-800/70">
       Odpowiadamy na pytania redakcyjne i propozycje tematów. Nie udzielamy porad medycznych przez e-mail — w takich sprawach prosimy o kontakt z lekarzem lub poradnią genetyczną.
     </p>

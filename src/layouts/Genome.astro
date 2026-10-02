@@ -40,7 +40,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
           <a href="/dzialy/" class="hover:text-white">Działy</a>
           <a href="/o-nas/" class="hover:text-white">O nas</a>
           <a href="/kontakt/" class="hover:text-white">Kontakt</a>
-        </nav>
+        <a href="/skorowidz/">Szukaj</a>
+          </nav>
       </div>
     </header>
     <slot />
@@ -73,5 +74,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
       </div>
     </footer>
     <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"fdab99c38a4d411199a6bb06d5db2919"}'></script>
+  <div id="pasek-genetyka" style="position:fixed;top:0;left:0;height:3px;width:0;background:#0f766e;z-index:40;pointer-events:none"></div>
+    <script>
+      const pasek = document.getElementById("pasek-genetyka");
+      addEventListener("scroll", () => {
+        const node = document.documentElement;
+        const max = node.scrollHeight - node.clientHeight;
+        pasek.style.width = (max > 0 ? (node.scrollTop / max) * 100 : 0) + "%";
+      }, { passive: true });
+    </script>
   </body>
 </html>

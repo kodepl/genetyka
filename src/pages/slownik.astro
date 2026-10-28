@@ -1,0 +1,151 @@
+---
+import Genome from "../layouts/Genome.astro";
+import site from "../site.config";
+
+const terms = [
+  {
+    term: "Allele",
+    def: "Warianty tego samego genu. W wielu genach dziedziczysz jedną kopię od każdego rodzica.",
+  },
+  {
+    term: "Autosomalne recesywne",
+    def: "Wzór, w którym choroba ujawnia się zwykle dopiero przy dwóch zmienionych kopiach genu. Nosiciel z jedną kopią często nie ma objawów.",
+  },
+  {
+    term: "Autosomalne dominujące",
+    def: "Wzór, w którym jedna zmieniona kopia genu może wystarczyć do zwiększonego ryzyka lub objawów, zależnie od choroby i penetracji.",
+  },
+  {
+    term: "Carrier / nosiciel",
+    def: "Osoba z jedną zmienioną kopią genu przy dziedziczeniu recesywnym. Sama nie musi chorować, może przekazać wariant potomstwu.",
+  },
+  {
+    term: "CNV",
+    def: "Zmiana liczby kopii fragmentu DNA (delecja lub duplikacja). Nie każdy panel genowy je wykrywa tak samo dobrze.",
+  },
+  {
+    term: "Dziedziczenie mitochondrialne",
+    def: "Przekazywanie DNA mitochondriów zwykle od matki. Dotyczy innego materiału niż DNA jądrowe.",
+  },
+  {
+    term: "Ekson / intron",
+    def: "Eksony kodują białko; introny są wycinane przy dojrzewaniu RNA. Panel może obejmować tylko eksony wybranego genu.",
+  },
+  {
+    term: "Fenotyp",
+    def: "Obserwowane cechy lub objawy. Ten sam genotyp nie zawsze daje ten sam obraz kliniczny.",
+  },
+  {
+    term: "Genotyp",
+    def: "Zestaw wariantów DNA w badanym zakresie. Wynik laboratoryjny opisuje genotyp, nie automatycznie decyzję leczniczą.",
+  },
+  {
+    term: "NIPT",
+    def: "Nieinwazyjne badanie prenatalne z krwi matki. To przesiew, nie pełna diagnoza wszystkich wad.",
+  },
+  {
+    term: "Panel genetyczny",
+    def: "Zestaw genów badanych naraz pod konkretne podejrzenie (np. dziedziczny rak piersi). Zakres panelu warto przeczytać przed pobraniem.",
+  },
+  {
+    term: "Patogenny / VUS / łagodny",
+    def: "Klasyfikacja wariantu: patogenny (silne powiązanie z chorobą), VUS (znaczenie niejasne), łagodny (zwykle bez klinicznego znaczenia).",
+  },
+  {
+    term: "Penetracja",
+    def: "Jak często wariant daje objawy u osób, które go mają. Wysoka penetracja nie oznacza, że wynik zastępuje opiekę kliniczną.",
+  },
+  {
+    term: "Sekwencjonowanie (WGS / WES)",
+    def: "WGS czyta niemal cały genom, WES skupia się na eksonach. Im szersze badanie, tym więcej wyników niejednoznacznych do omówienia.",
+  },
+  {
+    term: "Sprzężone z X",
+    def: "Gen na chromosomie X. Objawy u mężczyzn i nosicielstwo u kobiet bywają różne, bo mężczyźni mają jeden chromosom X.",
+  },
+  {
+    term: "VUS",
+    def: "Variant of uncertain significance: wariant o niejasnym znaczeniu. Nie jest automatycznie diagnozą ani wyrokiem.",
+  },
+];
+
+const letters = [...new Set(terms.map((t) => t.term[0].toLocaleUpperCase("pl-PL")))].sort((a, b) => a.localeCompare(b, "pl"));
+---
+<Genome
+  title="Słownik pojęć genetycznych"
+  description="Krótki słownik alleli, paneli, NIPT, VUS i wzorców dziedziczenia. Edukacja, nie poradnia."
+>
+  <main class="mx-auto max-w-3xl px-5 py-10">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-genome-700">Narzędzie</p>
+    <h1 class="mt-2 font-serif text-4xl font-semibold text-genome-950">Słownik pojęć</h1>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-genome-800/80">
+      Hasła z wyników badań i rozmów w poradni. Filtruj po literze albo wyszukaj słowo. Definicje są skrótowe i edukacyjne.
+    </p>
+
+    <label class="mt-8 block">
+      <span class="text-sm font-medium text-genome-800">Szukaj w słowniku</span>
+      <input
+        id="glossary-q"
+        type="search"
+        placeholder="np. VUS, NIPT, nosiciel"
+        class="mt-2 w-full rounded-sm border border-genome-800/20 bg-white px-4 py-3 text-sm shadow-sm focus:border-genome-600 focus:outline-none"
+      />
+    </label>
+
+    <div class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Filtr liter">
+      <button type="button" data-letter="all" class="letter-btn rounded-sm border border-genome-800/20 bg-white px-3 py-1.5 text-sm font-medium text-genome-900">Wszystkie</button>
+      {letters.map((letter) => (
+        <button type="button" data-letter={letter} class="letter-btn rounded-sm border border-genome-800/20 bg-white px-3 py-1.5 text-sm font-medium text-genome-900">{letter}</button>
+      ))}
+    </div>
+
+    <dl id="glossary-list" class="mt-8 space-y-4">
+      {terms.map((item) => (
+        <div
+          class="genome-shell glossary-item p-5"
+          data-term={item.term.toLocaleLowerCase("pl-PL")}
+          data-letter={item.term[0].toLocaleUpperCase("pl-PL")}
+        >
+          <dt class="font-serif text-xl font-semibold text-genome-950">{item.term}</dt>
+          <dd class="mt-2 text-sm leading-relaxed text-genome-800/80">{item.def}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <p class="mt-10 text-sm text-genome-800/70">
+      Słownik nie zastępuje wyniku z laboratorium ani rozmowy z genetykiem klinicznym. Więcej kontekstu: <a class="underline" href="/blog/">artykuły</a> i <a class="underline" href="/pytania/">lista pytań do poradni</a>.
+    </p>
+  </main>
+
+  <script is:inline>
+    (function () {
+      var q = document.getElementById("glossary-q");
+      var items = Array.prototype.slice.call(document.querySelectorAll(".glossary-item"));
+      var buttons = Array.prototype.slice.call(document.querySelectorAll(".letter-btn"));
+      var activeLetter = "all";
+      function apply() {
+        var query = (q && q.value ? q.value : "").toLocaleLowerCase("pl-PL").trim();
+        items.forEach(function (el) {
+          var term = el.getAttribute("data-term") || "";
+          var letter = el.getAttribute("data-letter") || "";
+          var letterOk = activeLetter === "all" || letter === activeLetter;
+          var queryOk = !query || term.indexOf(query) !== -1 || el.textContent.toLocaleLowerCase("pl-PL").indexOf(query) !== -1;
+          el.style.display = letterOk && queryOk ? "" : "none";
+        });
+      }
+      if (q) q.addEventListener("input", apply);
+      buttons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          activeLetter = btn.getAttribute("data-letter") || "all";
+          buttons.forEach(function (b) {
+            b.classList.toggle("bg-genome-800", b === btn);
+            b.classList.toggle("text-white", b === btn);
+            b.classList.toggle("bg-white", b !== btn);
+            b.classList.toggle("text-genome-900", b !== btn);
+          });
+          apply();
+        });
+      });
+    })();
+  </script>
+</Genome>

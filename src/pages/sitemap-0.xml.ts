@@ -10,7 +10,7 @@ export const GET: APIRoute = async () => {
   const cats = [...new Set(posts.map((p) => p.data.category).filter(Boolean))] as string[];
   const configCats = site.rubrics.map((r) => r.name);
   const allCats = [...new Set([...cats, ...configCats])];
-  const pages = ["/", "/blog/", "/dzialy/", "/o-nas/", "/kontakt/", "/polityka-prywatnosci/", "/regulamin/"];
+  const pages = ["/", "/blog/", "/dzialy/", "/slownik/", "/pytania/", "/o-nas/", "/kontakt/", "/polityka-prywatnosci/", "/regulamin/"];
   const urls = [
     ...pages.map((p) => `${origin}${p}`),
     ...allCats.map((c) => `${origin}/dzialy/${rubricSlug(c)}/`),

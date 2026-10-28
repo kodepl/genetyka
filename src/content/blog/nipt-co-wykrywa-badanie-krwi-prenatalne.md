@@ -1,61 +1,50 @@
 ---
-title: "NIPT — badanie krwi prenatalne: co wykrywa i kiedy je wykonać?"
-description: "NIPT to nowoczesne badanie krwi prenatalne, które wykrywa wiele nieprawidłowości genetycznych. Sprawdź, co można dzięki niemu zdiagnozować."
+title: "NIPT: badanie krwi prenatalne, zakres i ograniczenia"
+description: "Co zwykle obejmuje NIPT, kiedy się je wykonuje i czego wynik przesiewowy nie zastąpi."
 pubDate: "2026-08-18"
-author: "Dr hab. Magdalena Wójcik"
-authorBio: "Genetyczka kliniczna i popularyzatorka nauki. Od piętnastu lat tłumaczy wyniki badań DNA rodzinom i lekarzom pierwszego kontaktu."
+author: "Redakcja Genetyka"
+authorBio: "Zespół redakcyjny tłumaczy pojęcia z wyników badań DNA, rodowodów i poradni genetycznych. Nie prowadzimy poradni i nie wystawiamy zaleceń medycznych."
 category: "Badania prenatalne"
 tags: ["NIPT", "badania prenatalne", "genetyka"]
 readingTime: "6 min"
 ---
 
-## Czym jest NIPT?
+## Czym jest NIPT
 
-NIPT, czyli nieinwazyjne testy prenatalne, to badania krwi matki, które pozwalają wykryć niektóre nieprawidłowości genetyczne u płodu. Wykorzystują one technologię analizy fragmentów DNA płodowego, które krążą w krwiobiegu matki. Testy te stały się standardem w diagnostyce prenatalnej, oferując szybkie i dokładne wyniki.
+NIPT (nieinwazyjne badanie prenatalne) analizuje fragmenty DNA płodowego krążące we krwi matki. To badanie przesiewowe: szacuje ryzyko wybranych nieprawidłowości chromosomowych, a nie zastępuje pełnej diagnostyki ani USG.
 
-### Co wykrywa NIPT?
+## Co zwykle bywa w zakresie
 
-NIPT jest szczególnie skuteczne w wykrywaniu:
+Zakres zależy od laboratorium i wybranego pakietu. Często obejmuje:
 
-- **Trisomii chromosomów**: najczęściej badane trisomie to:
-  - Zespół Downa (trisomia 21) – występuje u 1 na 700 noworodków.
-  - Zespół Edwardsa (trisomia 18) – występuje u 1 na 5000 noworodków.
-  - Zespół Patau (trisomia 13) – występuje u 1 na 16000 noworodków.
-- **Nieprawidłowości w liczbie chromosomów płciowych**, np. zespoły Klinefeltera (XXY) czy Turnera (X0).
-- **Zaburzenia genetyczne** związane z mikrodelecjami, które mogą prowadzić do różnych syndromów, takich jak zespół DiGeorge’a.
+- trisomię 21 (zespół Downa),
+- trisomię 18 (zespół Edwardsa),
+- trisomię 13 (zespół Patau),
+- wybrane aneuploidie chromosomów płciowych.
 
-W praktyce, NIPT może wykryć do 99% przypadków trisomii, co czyni go jednym z najskuteczniejszych badań prenatalnych.
+Część ofert dodaje mikrodelecje. Im szerszy pakiet, tym ważniejsze pytanie o czułość, swoistość i odsetek wyników fałszywie dodatnich dla każdej pozycji.
 
-### Kiedy wykonać NIPT?
+## Kiedy wykonuje się badanie
 
-Zaleca się przeprowadzenie testu NIPT od **10. tygodnia ciąży**. W tym okresie stężenie DNA płodowego w krwi matki osiąga wystarczający poziom, aby wyniki były wiarygodne. Wykonanie badania w zbyt wczesnym etapie ciąży może prowadzić do fałszywych wyników.
+Wiele laboratoriów przyjmuje próbkę od około 10. tygodnia ciąży. Zbyt wczesne pobranie może dać wynik nieinformatywny. Lekarz prowadzący ustala termin względem USG i innych badań.
 
-### Jak przebiega badanie?
+## Jak wygląda procedura
 
-Badanie NIPT jest wyjątkowo proste i nieinwazyjne. Proces wygląda następująco:
+1. Pobranie krwi żylnej.
+2. Analiza w laboratorium.
+3. Raport z oceną ryzyka (wynik niskiego / wysokiego ryzyka albo wynik niejednoznaczny).
+4. Omówienie z lekarzem; przy wyniku wysokiego ryzyka rozmowa o diagnostyce potwierdzającej.
 
-1. **Pobranie krwi**: Od matki pobiera się 10 ml krwi.
-2. **Analiza laboratoryjna**: Krew trafia do laboratorium, gdzie analizowane są fragmenty DNA.
-3. **Oczekiwanie na wyniki**: Czas oczekiwania na wyniki to zazwyczaj 7-10 dni.
+## Fałszywie dodatnie i ujemne wyniki
 
-### Fałszywie dodatnie wyniki
+Żaden przesiew nie ma 100% pewności. Wynik wysokiego ryzyka nie jest diagnozą. Wynik niskiego ryzyka nie wyklucza wszystkich wad. Dlatego NIPT czyta się razem z USG, wywiadem i ewentualnymi badaniami inwazyjnymi.
 
-Fałszywie dodatnie wyniki to jedno z głównych wyzwań związanych z NIPT. Wbrew pozorom, choć testy są bardzo dokładne, nie są w 100% niezawodne. Szacuje się, że odsetek fałszywie dodatnich wyników wynosi od 0,5% do 5%, co oznacza, że w pewnych sytuacjach test może wskazać na nieprawidłowości genetyczne, których w rzeczywistości nie ma.
+## Czego NIPT nie robi
 
-Przykładowo, u kobiet w ciąży, które mają niskie ryzyko wystąpienia trisomii, fałszywie dodatnie wyniki mogą prowadzić do niepotrzebnych stresów i kolejnych badań, takich jak amniopunkcja, które niosą ryzyko powikłań.
+- Nie ocenia anatomii serca ani wielu wad strukturalnych.
+- Nie zastępuje badań w kierunku większości chorób jednogenowych.
+- Nie jest zamiennikiem poradnictwa, gdy w rodzinie jest znana mutacja wymagająca testu celowanego.
 
-### Dlaczego warto rozważyć NIPT?
+## Podsumowanie
 
-NIPT daje przyszłym rodzicom możliwość uzyskania wiarygodnych informacji na temat zdrowia ich dziecka. To badanie pozwala na:
-
-- **Wczesne wykrywanie chorób genetycznych**.
-- **Spokój ducha**: dla wielu rodziców wynik negatywny jest ulgą.
-- **Podjęcie decyzji**: w przypadku pozytywnego wyniku, rodzice mogą lepiej przygotować się na ewentualne wyzwania związane z wychowaniem dziecka z niepełnosprawnościami.
-
-### Jakie są ograniczenia NIPT?
-
-Pomimo wielu zalet, NIPT ma swoje ograniczenia. Nie wykrywa wszystkich możliwych zaburzeń genetycznych. Na przykład, nie zdiagnozuje wrodzonych wad serca, chorób jednogenowych ani innych anomalii strukturalnych. Dlatego przed podjęciem decyzji o wykonaniu testu warto skonsultować się z lekarzem, który pomoże ocenić ryzyko i wskazać odpowiednie badania.
-
-### Podsumowanie
-
-NIPT to nowoczesne, skuteczne narzędzie w diagnostyce prenatalnej. Dzięki swojej wysokiej czułości i niskiej inwazyjności, stanowi ważny element w opiece nad kobietą ciężarną i jej dzieckiem. Warto jednak podejść do niego z rozwagą, mając świadomość możliwości, ale również ograniczeń, jakie niesie. Ostatecznie, decyzja o wykonaniu badania powinna być dobrze przemyślana i dostosowana do indywidualnych potrzeb przyszłych rodziców.
+NIPT jest użytecznym przesiewem chromosomowym z krwi matki. Jego wartość rośnie, gdy pacjentka i lekarz wiedzą, co jest w pakiecie, a czego w nim nie ma. Porównanie z metodami inwazyjnymi: [diagnostyka inwazyjna a NIPT](/blog/diagnostyka-inwazyjna-vs-nipt-prenatalna/). Pytania na wizytę: [lista do poradni](/pytania/).

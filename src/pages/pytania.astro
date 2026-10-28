@@ -1,0 +1,108 @@
+---
+import Genome from "../layouts/Genome.astro";
+
+const groups = [
+  {
+    title: "Przed badaniem",
+    items: [
+      "Jaki jest cel badania: potwierdzenie podejrzenia, przesiew rodzinny, czy panel pod konkretną chorobę?",
+      "Które geny lub regiony DNA są w zakresie, a czego badanie świadomie nie obejmuje?",
+      "Czy wynik może zawierać warianty o niejasnym znaczeniu (VUS) i jak wtedy wygląda dalsza ścieżka?",
+      "Czy potrzebna jest próbka od rodziców lub innych krewnych do porównania?",
+    ],
+  },
+  {
+    title: "Po wyniku",
+    items: [
+      "Czy wariant jest patogenny, prawdopodobnie patogenny, VUS, czy łagodny według raportu laboratorium?",
+      "Jak ten wynik łączy się z objawami lub historią rodzinną, a czego wynik nie wyjaśnia?",
+      "Czy są zalecane badania kontrolne obrazowe, laboratoryjne albo konsultacje specjalistyczne?",
+      "Którzy krewni mogą mieć podobne ryzyko i jak przekazać informację bez paniki?",
+    ],
+  },
+  {
+    title: "Ciąża i badania prenatalne",
+    items: [
+      "Czy proponowane badanie jest przesiewowe, czy diagnostyczne?",
+      "Co oznacza wynik wysokiego ryzyka i jakie są kolejne kroki przed decyzją o badaniach inwazyjnych?",
+      "Czego badanie krwi nie wykrywa (wady strukturalne, wiele chorób jednogenowych)?",
+      "Gdzie mogę omówić wynik z genetykiem klinicznym, jeśli wynik jest niejednoznaczny?",
+    ],
+  },
+];
+---
+<Genome
+  title="Pytania do poradni genetycznej"
+  description="Lista pytań przed badaniem DNA, po wyniku i przy badaniach prenatalnych. Do wydruku lub skopiowania."
+>
+  <main class="mx-auto max-w-3xl px-5 py-10">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-genome-700">Narzędzie</p>
+    <h1 class="mt-2 font-serif text-4xl font-semibold text-genome-950">Pytania do poradni</h1>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-genome-800/80">
+      Zaznacz punkty, które chcesz zabrać na wizytę. Lista nie jest skierowaniem ani zaleceniem medycznym.
+    </p>
+
+    <div class="mt-6 flex flex-wrap gap-3">
+      <button id="check-all" type="button" class="rounded-sm border border-genome-800/20 bg-white px-4 py-2 text-sm font-medium">Zaznacz wszystkie</button>
+      <button id="clear-all" type="button" class="rounded-sm border border-genome-800/20 bg-white px-4 py-2 text-sm font-medium">Wyczyść</button>
+      <button id="copy-checked" type="button" class="rounded-sm bg-genome-800 px-4 py-2 text-sm font-semibold text-white">Kopiuj zaznaczone</button>
+    </div>
+    <p id="copy-status" class="mt-3 text-sm text-genome-700" aria-live="polite"></p>
+
+    <form id="questions-form" class="mt-8 space-y-8">
+      {groups.map((group, gi) => (
+        <section class="genome-shell p-5">
+          <h2 class="font-serif text-2xl font-semibold text-genome-950">{group.title}</h2>
+          <ul class="mt-4 space-y-3">
+            {group.items.map((item, ii) => (
+              <li>
+                <label class="flex gap-3 text-sm leading-relaxed text-genome-900">
+                  <input type="checkbox" name={`q-${gi}-${ii}`} value={item} class="mt-1 h-4 w-4 accent-genome-700" />
+                  <span>{item}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </form>
+
+    <p class="mt-10 text-sm text-genome-800/70">
+      Po rozmowie warto wrócić do <a class="underline" href="/slownik/">słownika</a> albo artykułów o <a class="underline" href="/dzialy/badania-prenatalne/">badaniach prenatalnych</a> i <a class="underline" href="/dzialy/dna-i-dziedziczenie/">dziedziczeniu</a>.
+    </p>
+  </main>
+
+  <script is:inline>
+    (function () {
+      var form = document.getElementById("questions-form");
+      var status = document.getElementById("copy-status");
+      function boxes() {
+        return Array.prototype.slice.call(form.querySelectorAll('input[type="checkbox"]'));
+      }
+      document.getElementById("check-all").addEventListener("click", function () {
+        boxes().forEach(function (b) { b.checked = true; });
+      });
+      document.getElementById("clear-all").addEventListener("click", function () {
+        boxes().forEach(function (b) { b.checked = false; });
+        status.textContent = "";
+      });
+      document.getElementById("copy-checked").addEventListener("click", function () {
+        var lines = boxes().filter(function (b) { return b.checked; }).map(function (b) { return "- " + b.value; });
+        if (!lines.length) {
+          status.textContent = "Nic nie zaznaczono.";
+          return;
+        }
+        var text = "Pytania do poradni genetycznej\n\n" + lines.join("\n");
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            status.textContent = "Skopiowano " + lines.length + " pytań.";
+          }).catch(function () {
+            status.textContent = "Nie udało się skopiować. Zaznacz tekst ręcznie.";
+          });
+        } else {
+          status.textContent = "Schowek niedostępny w tej przeglądarce.";
+        }
+      });
+    })();
+  </script>
+</Genome>

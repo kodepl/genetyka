@@ -2,61 +2,79 @@
 import Genome from "../layouts/Genome.astro";
 import { getCollection } from "astro:content";
 import site, { coverFor, rubricSlug } from "../site.config";
+
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const lead = posts[0];
 const rest = posts.slice(1, 7);
-const cats = [...new Set(posts.map((p) => p.data.category).filter(Boolean))] as string[];
 ---
 <Genome title={site.name} description={site.tagline} image={site.heroImage}>
-  <div class="mx-auto grid max-w-6xl gap-10 px-5 py-10 lg:grid-cols-[1fr_300px]">
+  <section class="relative overflow-hidden border-b border-genome-800/10">
+    <div class="mx-auto grid max-w-6xl gap-10 px-5 py-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-genome-700">Portal edukacyjny</p>
+        <h1 class="mt-3 font-serif text-5xl font-semibold leading-[1.05] text-genome-950 md:text-6xl">{site.name}</h1>
+        <p class="mt-5 max-w-xl text-lg leading-relaxed text-genome-800/80">
+          Tłumaczymy wynik badania, wzorzec dziedziczenia i język poradni genetycznej. Bez obietnic cudów i bez zastępowania lekarza.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/blog/" class="rounded-sm bg-genome-800 px-5 py-3 text-sm font-semibold text-white hover:bg-genome-700">Czytaj artykuły</a>
+          <a href="/slownik/" class="rounded-sm border border-genome-800/20 bg-white/80 px-5 py-3 text-sm font-semibold text-genome-900 hover:border-genome-700">Otwórz słownik</a>
+          <a href="/pytania/" class="rounded-sm border border-genome-800/20 bg-white/80 px-5 py-3 text-sm font-semibold text-genome-900 hover:border-genome-700">Lista pytań</a>
+        </div>
+      </div>
+      <figure class="genome-shell overflow-hidden">
+        <img src={site.heroImage} alt="" class="h-64 w-full object-cover md:h-72" />
+        <figcaption class="px-4 py-3 text-sm text-genome-800/70">
+          Edukacja o DNA i badaniach genetycznych. Nie prowadzimy diagnostyki online.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="mx-auto grid max-w-6xl gap-10 px-5 py-12 lg:grid-cols-[1fr_300px]">
     <section>
       {lead && (
-        <a href={`/blog/${lead.slug}/`} class="group block overflow-hidden rounded-sm border border-genome-800/10 bg-white shadow-sm">
+        <a href={`/blog/${lead.slug}/`} class="group genome-shell block overflow-hidden">
           <img src={coverFor(lead.data.category, lead.data.image)} alt="" class="h-72 w-full object-cover transition group-hover:opacity-95" />
           <div class="p-6">
             <p class="text-xs font-semibold uppercase tracking-widest text-genome-700">{lead.data.category}</p>
-            <h1 class="mt-2 font-serif text-4xl font-semibold leading-tight text-genome-950">{lead.data.title}</h1>
+            <h2 class="mt-2 font-serif text-3xl font-semibold leading-tight text-genome-950 md:text-4xl">{lead.data.title}</h2>
             <p class="mt-3 text-genome-800/80">{lead.data.description}</p>
           </div>
         </a>
       )}
       <div class="mt-8 grid gap-5 sm:grid-cols-2">
         {rest.map((post) => (
-          <a href={`/blog/${post.slug}/`} class="group block overflow-hidden rounded-sm border border-genome-800/10 bg-white shadow-sm">
+          <a href={`/blog/${post.slug}/`} class="group genome-shell block overflow-hidden">
             <img src={coverFor(post.data.category, post.data.image)} alt="" class="h-36 w-full object-cover" />
             <div class="p-4">
               <p class="text-xs uppercase tracking-wide text-genome-700">{post.data.category}</p>
-              <h2 class="mt-1 font-serif text-xl font-semibold leading-snug group-hover:text-genome-700">{post.data.title}</h2>
+              <h3 class="mt-1 font-serif text-xl font-semibold leading-snug group-hover:text-genome-700">{post.data.title}</h3>
             </div>
           </a>
         ))}
       </div>
     </section>
-    <aside class="h-fit space-y-6 rounded-sm border border-genome-800/10 bg-white p-5 shadow-sm">
+
+    <aside class="h-fit space-y-6 genome-shell p-5">
       <div>
-        <h2 class="font-serif text-lg font-semibold text-genome-900">Z laboratorium na stół</h2>
+        <h2 class="font-serif text-lg font-semibold text-genome-900">Jak czytamy wyniki</h2>
         <p class="mt-2 text-sm leading-relaxed text-genome-800/75">
-          Piszemy o wynikach badań, które rodziny dostają na papierze — z liczbami, przykładami z kliniki i bez obietnic cudów.
+          Liczby, wzorce rodowodowe i granice badania przesiewowego. Teksty służą przygotowaniu do rozmowy z lekarzem lub genetykiem klinicznym.
         </p>
       </div>
       <div>
         <h2 class="font-serif text-lg font-semibold text-genome-900">Działy</h2>
         <ul class="mt-3 space-y-2 text-sm">
-          {cats.length > 0
-            ? cats.map((cat) => (
-                <li><a class="text-genome-800 hover:text-genome-600" href={`/dzialy/${rubricSlug(cat)}/`}>{cat}</a></li>
-              ))
-            : site.rubrics.map((r) => (
-                <li><a class="text-genome-800 hover:text-genome-600" href={`/dzialy/${rubricSlug(r.name)}/`}>{r.name}</a></li>
-              ))}
+          {site.rubrics.map((r) => (
+            <li><a class="text-genome-800 hover:text-genome-600" href={`/dzialy/${rubricSlug(r.name)}/`}>{r.name}</a></li>
+          ))}
         </ul>
       </div>
-      <div class="flex gap-3 border-t border-genome-800/10 pt-5">
-        <img src={site.authorAvatar} alt={site.author} class="h-14 w-14 rounded-full object-cover ring-2 ring-genome-700/20" />
-        <div>
-          <p class="font-medium text-genome-950">{site.author}</p>
-          <p class="text-xs text-genome-700">{site.authorRole}, {site.city}</p>
-        </div>
+      <div class="border-t border-genome-800/10 pt-5">
+        <p class="font-medium text-genome-950">{site.author}</p>
+        <p class="mt-1 text-xs text-genome-700">{site.authorRole}, {site.city}</p>
+        <p class="mt-3 text-sm leading-relaxed text-genome-800/75">{site.authorBio}</p>
       </div>
       <a href="/blog/" class="inline-block text-sm font-medium text-genome-700 underline decoration-genome-600/40 hover:text-genome-600">Wszystkie artykuły</a>
     </aside>

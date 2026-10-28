@@ -9,7 +9,7 @@ const displayCats = cats.length > 0 ? cats : site.rubrics.map((r) => r.name);
 <Genome title="Działy" description="Genetyka medyczna, DNA, badania prenatalne i onkogenetyka.">
   <section class="mx-auto max-w-5xl px-5 py-10">
     <h1 class="font-serif text-4xl font-semibold text-genome-950">Działy</h1>
-    <p class="mt-2 max-w-2xl text-genome-800/75">Tematy uporządkowane tak, jak pytają nas czytelnicy w gabinecie genetycznym.</p>
+    <p class="mt-2 max-w-2xl text-genome-800/75">Tematy uporządkowane tak, jak pytają czytelnicy przed wizytą w poradni genetycznej.</p>
     <div class="mt-10 grid gap-5 md:grid-cols-2">
       {displayCats.map((cat) => {
         const sample = posts.find((p) => p.data.category === cat);

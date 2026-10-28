@@ -4,18 +4,18 @@ const u = (id: string, w = 1400) =>
 const site = {
   name: "Genetyka",
   domain: "genetyka.com.pl",
-  tagline: "DNA, dziedziczenie i genetyka medyczna — bez mitów i bez żargonu dla samego żargonu",
+  tagline: "Edukacja o DNA, dziedziczeniu i badaniach genetycznych po polsku",
   email: "redakcja@genetyka.com.pl",
   city: "Warszawa",
   address: "ul. Królewska 18, lok. 4, 00-103 Warszawa",
-  author: "Dr hab. Magdalena Wójcik",
+  author: "Redakcja Genetyka",
   authorBio:
-    "Genetyczka kliniczna i popularyzatorka nauki. Od piętnastu lat tłumaczy wyniki badań DNA rodzinom i lekarzom pierwszego kontaktu.",
-  authorRole: "Genetyczka kliniczna",
+    "Zespół redakcyjny tłumaczy pojęcia z wyników badań DNA, rodowodów i poradni genetycznych. Nie prowadzimy poradni i nie wystawiamy zaleceń medycznych.",
+  authorRole: "Portal edukacyjny",
   authorAvatar:
     "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&h=200&q=80",
   heroImage: u("photo-1628595353829-04b8544a750f", 1600),
-  aboutImage: u("photo-1532187863486-abf9db3851ee", 1200),
+  aboutImage: u("photo-1532187863486-abf9dbad3851ee", 1200),
   covers: {
     "Genetyka medyczna": u("photo-1530026405186-ed1f139313f8"),
     "DNA i dziedziczenie": u("photo-1559757148-5c350d0d3c56"),
@@ -26,19 +26,19 @@ const site = {
   rubrics: [
     {
       name: "Genetyka medyczna",
-      blurb: "Choroby rzadkie, farmakogenetyka, sekwencjonowanie — kiedy wynik zmienia leczenie.",
+      blurb: "Choroby rzadkie, farmakogenetyka, sekwencjonowanie: kiedy wynik zmienia rozmowę z lekarzem.",
     },
     {
       name: "DNA i dziedziczenie",
-      blurb: "Autosomalne, sprzężone z X, epigenetyka — wzorce, które widać w rodowodzie.",
+      blurb: "Wzorce autosomalne, sprzężone z X i epigenetyka: co widać w rodowodzie.",
     },
     {
       name: "Badania prenatalne",
-      blurb: "NIPT, triple test, USG — co wykrywa każde badanie i czego nie zastąpi.",
+      blurb: "NIPT, triple test, USG: co wykrywa każde badanie i czego nie zastąpi.",
     },
     {
       name: "Onkogenetyka",
-      blurb: "BRCA, Lynch, panel nowotworowy — ryzyko dziedziczone i profilaktyka.",
+      blurb: "BRCA i panele nowotworowe: ryzyko dziedziczone i język wyniku.",
     },
   ],
 };
